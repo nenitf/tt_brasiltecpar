@@ -1,0 +1,13 @@
+version: "3.3"
+
+services:
+  app:
+    build: .docker/php
+    volumes:
+      - ./.docker/apache/vhost.conf:/etc/apache2/sites-available/000-default.conf
+      - .:/var/www/html
+    working_dir: /var/www/html
+    ports:
+      - "${APP_PORT:?err}:80"
+    expose:
+      - "${APP_PORT:?err}"
