@@ -9,7 +9,7 @@ class HashApiTest extends WebTestCase
     /**
      * @dataProvider hashProvider()
      */
-    public function testCriaHash($entrada): void
+    public function testCriaHash($entrada)
     {
         $client = static::createClient();
 
