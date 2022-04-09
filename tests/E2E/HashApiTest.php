@@ -37,4 +37,9 @@ class HashApiTest extends WebTestCase
         yield ['0000e350aea8329b93a7346e77cb47b3'];
         yield ['0000f06cc0271af767f1976526a0a4ec'];
     }
+
+    public function testLimita10RequisicoesPorIp(): void
+    {
+        $this->markTestIncomplete('Implementar');
+    }
 }
