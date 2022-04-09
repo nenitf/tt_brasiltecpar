@@ -23,8 +23,6 @@ class HashApiTest extends WebTestCase
         $this->assertNotEmpty($responseData->hash);
         $this->assertNotEmpty($responseData->key);
         $this->assertGreaterThan(0, $responseData->tentativas);
-
-        $this->markTestIncomplete('Testar persistencia');
     }
 
     public function hashProvider()
