@@ -4,12 +4,12 @@ namespace App\Tests\E2E;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class PostControllerTest extends WebTestCase
+class HashApiTest extends WebTestCase
 {
     /**
      * @dataProvider hashProvider()
      */
-    public function testSomething($entrada): void
+    public function testCriaHash($entrada): void
     {
         $client = static::createClient();
 
