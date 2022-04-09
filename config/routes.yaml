@@ -5,3 +5,9 @@ controllers:
 kernel:
     resource: ../src/Kernel.php
     type: annotation
+
+create_hash:
+    path: /hash/{entry}
+    controller: App\Controller\HashController::create
+    methods:
+        - POST
