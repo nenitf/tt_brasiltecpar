@@ -45,6 +45,8 @@ Com a **configuração inicial** já realizada, suba os containers se necessári
 docker-compose --env-file .env.local up -d
 ```
 
+Acesse a documentação interativa disponível em `localhost:8080/api/doc`
+
 ### Teste
 
 - Individual
