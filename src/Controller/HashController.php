@@ -2,17 +2,18 @@
 
 namespace App\Controller;
 
+use App\Core\Service\Hashing\GeracaoComPrefixoDeZerosService;
+
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class HashController
+class HashController extends AbstractController
 {
-    public function create($entry): JsonResponse
-    {
-        return new JsonResponse([
-            'hash'       => '0000',
-            'key'        => 'a',
-            'tentativas' => 1,
-        ]);
+    public function create(
+        $entry, GeracaoComPrefixoDeZerosService $service
+    ): JsonResponse {
+        $resultado = $service->execute($entry);
+        return new JsonResponse($resultado);
     }
 }
