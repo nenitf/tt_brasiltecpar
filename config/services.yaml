@@ -6,6 +6,12 @@
 parameters:
 
 services:
+    App\Provider\RandomizerProvider: ~
+    App\Provider\Md5Provider: ~
+
+    App\Core\Provider\IRandomizerProvider: '@App\Provider\RandomizerProvider'
+    App\Core\Provider\ICryptProvider: '@App\Provider\Md5Provider'
+
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
@@ -19,6 +25,9 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+            - '../src/Core/Exception/'
+            - '../src/Core/Model/'
+            - '../src/Core/Provider/'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
