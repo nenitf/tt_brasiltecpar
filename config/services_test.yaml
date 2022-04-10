@@ -1,0 +1,20 @@
+parameters:
+
+services:
+    App\Core\Provider\IRandomizerProvider: ~
+    App\Core\Provider\ICryptProvider: ~
+
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: true
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Core/Exception/'
+            - '../src/Core/Model/'
+            - '../src/Core/Provider/'
