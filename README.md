@@ -43,3 +43,15 @@ Com a **configuração inicial** já realizada, suba os containers se necessári
 ```sh
 docker-compose --env-file .env.local up -d
 ```
+
+### Teste
+
+- Individual
+    ```sh
+    docker-compose --env-file .env.local exec app php bin/phpunit tests/caminho/do/ExemploTest.php
+    ```
+
+- Completo
+    ```sh
+    docker-compose --env-file .env.local exec app php bin/phpunit
+    ```
