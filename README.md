@@ -7,7 +7,7 @@ O teste é formado por 3 partes.
 1. A criação de uma rota que encontra um hash, de certo formato, para uma certa string fornecida como input.
     - [x] Encontro da key que gere hash iniciando com 4 zeros para certa string informada.
     - [x] Criação de rota.
-    - [ ] Controle do número máximo de requisições aceitas em 1 minuto pela rota.
+    - [x] Controle do número máximo de requisições aceitas em 1 minuto pela rota.
 2. A criação de um comando que consulta a rota criada e armazena os resultados na base de dados.
     - [ ] Buscar e armazenar resultados obtidos.
     - [ ] Respeitar o limite de requisições da rota.
