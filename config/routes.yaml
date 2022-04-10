@@ -1,13 +1,9 @@
-controllers:
-    resource: ../src/Controller/
-    type: annotation
-
-kernel:
-    resource: ../src/Kernel.php
-    type: annotation
+app.swagger_ui:
+  path: /api/doc
+  methods: GET
+  defaults: { _controller: nelmio_api_doc.controller.swagger_ui }
 
 create_hash:
-    path: /api/hash/{entry}
-    controller: App\Controller\HashController::create
-    methods:
-        - POST
+  path: /api/hash/{entry}
+  methods: POST
+  controller: App\Controller\HashController::create
