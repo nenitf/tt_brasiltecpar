@@ -4,7 +4,7 @@ namespace App\Core\Model;
 
 use App\Core\Exception\ValidationException;
 
-class HashTipoZero
+class HashTipoZero extends Hash
 {
     public function __construct(private string $hash)
     {
@@ -21,6 +21,6 @@ class HashTipoZero
 
     public function getContent(): string
     {
-        return $hash;
+        return $this->hash;
     }
 }
