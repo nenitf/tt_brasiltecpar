@@ -1,9 +1,6 @@
 parameters:
 
 services:
-    App\Core\Provider\IRandomizerProvider: ~
-    App\Core\Provider\ICryptProvider: ~
-
     _defaults:
         autowire: true
         autoconfigure: true
