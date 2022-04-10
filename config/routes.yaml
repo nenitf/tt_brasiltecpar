@@ -7,7 +7,7 @@ kernel:
     type: annotation
 
 create_hash:
-    path: /hash/{entry}
+    path: /api/hash/{entry}
     controller: App\Controller\HashController::create
     methods:
         - POST

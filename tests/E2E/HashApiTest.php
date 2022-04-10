@@ -13,7 +13,7 @@ class HashApiTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('POST', "/hash/$entrada");
+        $crawler = $client->request('POST', "/api/hash/$entrada");
 
         $this->assertResponseIsSuccessful();
         $response = $client->getResponse();
