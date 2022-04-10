@@ -19,6 +19,8 @@ class GeracaoComPrefixoDeZerosServiceTest extends KernelTestCase
     {
         self::bootKernel();
 
+        $container = static::getContainer();
+
         $service = new GeracaoComPrefixoDeZerosService(
             $constructor[0] ?? $container->get(IRandomizerProvider::class),
             $constructor[1] ?? $container->get(ICryptProvider::class),
