@@ -6,9 +6,7 @@ use App\Core\Exception\ValidationException;
 
 class HashTipoZero
 {
-    private string $hash;
-
-    public function __construct(string $hash)
+    public function __construct(private string $hash)
     {
         if(!$this->hashValido($hash))
             throw new ValidationException("Hash inválido", $hash);
