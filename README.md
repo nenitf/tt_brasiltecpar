@@ -9,15 +9,17 @@ O teste é formado por 3 partes.
     - [x] Criação de rota.
     - [x] Controle do número máximo de requisições aceitas em 1 minuto pela rota.
 2. A criação de um comando que consulta a rota criada e armazena os resultados na base de dados.
-    - [ ] Buscar e armazenar resultados obtidos.
-    - [ ] Respeitar o limite de requisições da rota.
-    - [ ] Aguardar o menor tempo possível para realização de todas requisições solicitadas.
+    - [x] Buscar e armazenar resultados obtidos.
+    - [x] Respeitar o limite de requisições da rota.
+    - [x] Aguardar o menor tempo possível para realização de todas requisições solicitadas.
 3. Criação de rota que retorne os resultados que foram gravados.
     - [ ] Retornar os resultados de forma paginada;
     - [ ] Ter o filtro por "Número de tentativas" podendo filtrar por resultados que tiveram menos de x tentativas.
     - [ ] Não devem ser retornados todos os campos da tabela, somente as informações nas colunas batch, "Número do bloco", "String de entrada" e "Chave encontrada".
 
 ## Execução local com Docker
+
+> Foram criado "alias" no `Makefile` para facilitar as operações. Caso não possua o comando `make`, leia as instruções no arquivo e execute-as diretamente.
 
 ### Configuração inicial
 
@@ -28,13 +30,19 @@ O teste é formado por 3 partes.
 
 2. Crie os containers
     ```sh
-    docker-compose --env-file .env.local up -d
+    make up
     ```
-    > Caso queira, ao final da configuração, pare os containers com ``docker-compose --env-file .env.local down``
+    > Caso queira, ao final da configuração, pare os containers com ``make down``
 
 3. Baixe as dependências do composer
     ```sh
-    docker-compose exec app composer install
+    make install
+    ```
+
+4. Crie a base de dados
+    ```sh
+    make createdb
+    make migrate
     ```
 
 ### Execução
@@ -42,19 +50,39 @@ O teste é formado por 3 partes.
 Com a **configuração inicial** já realizada, suba os containers se necessário e acesse a aplicação em `localhost:8080`
 
 ```sh
-docker-compose --env-file .env.local up -d
+make up
 ```
+
+#### API
 
 Acesse a documentação interativa disponível em `localhost:8080/api/doc`
 
-### Teste
+#### CLI
 
-- Individual
+1. Acesse o container
     ```sh
-    docker-compose --env-file .env.local exec app php bin/phpunit tests/caminho/do/ExemploTest.php
+    make bash
     ```
+
+2. Execute o comando
+    ```sh
+    php bin/console avato:test entrada --requests=20
+    ```
+
+### Teste
 
 - Completo
     ```sh
-    docker-compose --env-file .env.local exec app php bin/phpunit
+    make test
     ```
+
+- Individual
+    1. Acesse o container
+        ```sh
+        make bash
+        ```
+
+    2. Execute o comando
+        ```sh
+        php bin/phpunit tests/caminho/do/ExemploTest.php
+        ```
