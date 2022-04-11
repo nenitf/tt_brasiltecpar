@@ -8,9 +8,11 @@ parameters:
 services:
     App\Provider\RandomizerProvider: ~
     App\Provider\Md5Provider: ~
+    App\Repository\ResultadosCliRepository: ~
 
     App\Core\Provider\IRandomizerProvider: '@App\Provider\RandomizerProvider'
     App\Core\Provider\ICryptProvider: '@App\Provider\Md5Provider'
+    App\Core\Repository\IResultadosCliRepository: '@App\Repository\ResultadosCliRepository'
 
     # default configuration for services in *this* file
     _defaults:
