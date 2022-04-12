@@ -55,29 +55,37 @@ class AvatoTestCommand extends Command
         InputInterface $input,
         OutputInterface $output,
     ): int {
+        $isConsoleOutput = get_class($output) === \Symfony\Component\Console\Output\ConsoleOutput::class;
         $ip = gethostbyname(gethostname());
 
-        $entry = $input->getArgument('string');
-        $requests = $input->getOption('requests');
-        $batch = new \DateTime();
+        $entry      = $input->getArgument('string');
+        $requests   = $input->getOption('requests');
+        $batch      = new \DateTime();
 
-        $section1 = $output->section();
-        $section2 = $output->section();
+        $table    = null;
+        $progress = null;
+        if($isConsoleOutput) {
+            $section1 = $output->section();
+            $section2 = $output->section();
 
-        $table = new Table($section1);
-        $table->setHeaders(['Bloco', 'Ação', 'timestamp']);
-        $table->render();
+            $table = new Table($section1);
+            $table->setHeaders(['Bloco', 'Ação', 'timestamp']);
+            $table->render();
 
-        $progress = new ProgressBar($section2);
-        $progress->start($requests);
+            $progress = new ProgressBar($section2);
+            $progress->start($requests);
+        }
 
         for($i = 0; $i < $requests; $i++) {
             $request = Request::createFromGlobals();
             $controller = new HashController();
 
             $bloco = $i+1;
-            $dumptime = date('H:i:s');
-            $table->appendRow([$bloco, "Aguardando Limiter", $dumptime]);
+
+            if($isConsoleOutput) {
+                $dumptime = date('H:i:s');
+                $table->appendRow([$bloco, "Aguardando Limiter", $dumptime]);
+            }
 
             $response = $controller->create(
                 $entry,
@@ -100,13 +108,15 @@ class AvatoTestCommand extends Command
 
             $this->repo->save($resultado);
 
-            $dumptime = date('H:i:s');
-            $table->appendRow([
-                "$bloco",
-                "<info>Cadastrado com sucesso</info>",
-                "<info>$dumptime</info>",
-            ]);
-            $progress->advance();
+            if($isConsoleOutput) {
+                $dumptime = date('H:i:s');
+                $table->appendRow([
+                    "$bloco",
+                    "<info>Cadastrado com sucesso</info>",
+                    "<info>$dumptime</info>",
+                ]);
+                $progress->advance();
+            }
         }
 
         return Command::SUCCESS;
