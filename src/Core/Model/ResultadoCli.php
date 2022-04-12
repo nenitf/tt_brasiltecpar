@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass=ResultadosCliRepository::class)
  * @ORM\Table(name="resultados_cli")
  */
-class ResultadoCli
+class ResultadoCli implements \JsonSerializable
 {
     /**
      * @ORM\Id()
@@ -68,5 +68,17 @@ class ResultadoCli
     public function getId()
     {
         return $this->id;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return [
+            'batch'     => $this->batch->format('Y-m-d H:i:s'),
+            'entrada'   => $this->entrada,
+            'key'       => $this->key,
+            'bloco'     => $this->bloco,
+            // 'tentativas'    => $this->tentativas,
+            // 'id'            => $this->id,
+        ];
     }
 }

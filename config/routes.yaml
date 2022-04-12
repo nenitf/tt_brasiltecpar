@@ -14,3 +14,8 @@ create_hash:
   path: /api/hash/{entry}
   methods: POST
   controller: App\Controller\HashController::create
+
+list_resultados:
+  path: /api/resultados-cli
+  methods: GET
+  controller: App\Controller\ResultadoCliController::index
