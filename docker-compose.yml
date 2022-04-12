@@ -8,8 +8,6 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE:?err}
       MYSQL_USER: ${MYSQL_USER:?err}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD:?err}
-    ports:
-      - ${MYSQL_PORT-3306}:3306
     volumes:
       - ./.docker/mysql-data:/var/lib/mysql
 
