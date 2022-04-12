@@ -77,7 +77,7 @@ class AvatoTestCommand extends Command
 
             $bloco = $i+1;
             $dumptime = date('H:i:s');
-            $table->appendRow([$bloco, "<comment>Aguardando Limiter</comment>", $dumptime]);
+            $table->appendRow([$bloco, "Aguardando Limiter", $dumptime]);
 
             $response = $controller->create(
                 $entry,
@@ -101,7 +101,11 @@ class AvatoTestCommand extends Command
             $this->repo->save($resultado);
 
             $dumptime = date('H:i:s');
-            $table->appendRow([$bloco, "<info>Cadastrado com sucesso</info>", $dumptime]);
+            $table->appendRow([
+                "$bloco",
+                "<info>Cadastrado com sucesso</info>",
+                "<info>$dumptime</info>",
+            ]);
             $progress->advance();
         }
 
