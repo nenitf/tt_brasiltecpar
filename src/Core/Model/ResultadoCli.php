@@ -77,8 +77,6 @@ class ResultadoCli implements \JsonSerializable
             'entrada'   => $this->entrada,
             'key'       => $this->key,
             'bloco'     => $this->bloco,
-            // 'tentativas'    => $this->tentativas,
-            // 'id'            => $this->id,
         ];
     }
 }

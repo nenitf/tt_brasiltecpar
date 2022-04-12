@@ -95,7 +95,6 @@ class AvatoTestCommand extends Command
                 entrada:    $response->entrada,
                 key:        $response->key,
                 hash:       $response->hash,
-                // hash: new HashTipoZero($response->hash),
                 tentativas: $response->tentativas
             );
 
@@ -107,8 +106,6 @@ class AvatoTestCommand extends Command
         }
 
         return Command::SUCCESS;
-        // return Command::FAILURE;
-        // return Command::INVALID
     }
 }
 
