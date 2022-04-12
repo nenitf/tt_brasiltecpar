@@ -23,7 +23,7 @@ O teste é formado por 3 partes.
 
 ### Configuração inicial
 
-1. Duplique `.env.local.example` e renomeie para `.env.local`
+1. Duplique `.env.local.example` como `.env.local` e atualize as variáveis se necessário
     ```sh
     cp .env.local.example .env.local
     ```
