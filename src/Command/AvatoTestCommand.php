@@ -17,6 +17,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\RateLimiter\RateLimiterFactory;
+use Symfony\Component\Console\Helper\Table;
+use Symfony\Component\Console\Helper\ProgressBar;
 
 use Symfony\Component\HttpFoundation\Request;
 
@@ -59,9 +61,23 @@ class AvatoTestCommand extends Command
         $requests = $input->getOption('requests');
         $batch = new \DateTime();
 
+        $section1 = $output->section();
+        $section2 = $output->section();
+
+        $table = new Table($section1);
+        $table->setHeaders(['Bloco', 'Ação', 'timestamp']);
+        $table->render();
+
+        $progress = new ProgressBar($section2);
+        $progress->start($requests);
+
         for($i = 0; $i < $requests; $i++) {
             $request = Request::createFromGlobals();
             $controller = new HashController();
+
+            $bloco = $i+1;
+            $dumptime = date('H:i:s');
+            $table->appendRow([$bloco, "<comment>Aguardando Limiter</comment>", $dumptime]);
 
             $response = $controller->create(
                 $entry,
@@ -75,7 +91,7 @@ class AvatoTestCommand extends Command
 
             $resultado = new ResultadoCli(
                 batch:      $batch,
-                bloco:      $i+1,
+                bloco:      $bloco,
                 entrada:    $response->entrada,
                 key:        $response->key,
                 hash:       $response->hash,
@@ -84,6 +100,10 @@ class AvatoTestCommand extends Command
             );
 
             $this->repo->save($resultado);
+
+            $dumptime = date('H:i:s');
+            $table->appendRow([$bloco, "<info>Cadastrado com sucesso</info>", $dumptime]);
+            $progress->advance();
         }
 
         return Command::SUCCESS;
