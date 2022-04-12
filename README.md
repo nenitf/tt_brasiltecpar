@@ -42,6 +42,8 @@ O teste é formado por 3 partes.
 4. Crie a base de dados
     ```sh
     make createdb
+    ```
+    ```sh
     make migrate
     ```
 
