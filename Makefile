@@ -8,7 +8,7 @@ install:
 	@docker-compose --env-file .env.local exec app composer install
 
 createdb:
-	@docker-compose --env-file .env.local exec app php bin/console doctrine:database:create
+	@docker-compose --env-file .env.local exec app php bin/console doctrine:database:create --if-not-exists
 
 migrate:
 	@docker-compose --env-file .env.local exec app php bin/console doctrine:migrations:migrate
