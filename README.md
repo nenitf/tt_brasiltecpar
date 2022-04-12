@@ -13,9 +13,9 @@ O teste é formado por 3 partes.
     - [x] Respeitar o limite de requisições da rota.
     - [x] Aguardar o menor tempo possível para realização de todas requisições solicitadas.
 3. Criação de rota que retorne os resultados que foram gravados.
-    - [ ] Retornar os resultados de forma paginada;
-    - [ ] Ter o filtro por "Número de tentativas" podendo filtrar por resultados que tiveram menos de x tentativas.
-    - [ ] Não devem ser retornados todos os campos da tabela, somente as informações nas colunas batch, "Número do bloco", "String de entrada" e "Chave encontrada".
+    - [x] Retornar os resultados de forma paginada;
+    - [x] Ter o filtro por "Número de tentativas" podendo filtrar por resultados que tiveram menos de x tentativas.
+    - [x] Não devem ser retornados todos os campos da tabela, somente as informações nas colunas batch, "Número do bloco", "String de entrada" e "Chave encontrada".
 
 ## Execução local com Docker
 
