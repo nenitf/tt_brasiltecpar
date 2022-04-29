@@ -1,6 +1,6 @@
 # tt_hasheros
 
-Teste técnico para [Brasil TecPar](https://www.brasiltecpar.com.br/)
+Teste técnico para [Brasil TecPar](https://www.brasiltecpar.com.br/) cujo **NÃO OBTIVE RESPOSTA**
 
 O teste é formado por 3 partes.
 
@@ -73,18 +73,14 @@ Acesse a documentação interativa disponível em `localhost:8080/api/doc`
 
 ### Teste
 
-- Completo
+1. Acesse o container
     ```sh
-    make test
+    make bash
     ```
-
-- Individual
-    1. Acesse o container
-        ```sh
-        make bash
-        ```
-
-    2. Execute o comando
-        ```sh
-        php bin/phpunit tests/caminho/do/ExemploTest.php
-        ```
+    
+2. Execute o comando
+    ```sh
+    php bin/phpunit
+    ```
+    
+    > Para um teste específico utilize ``php bin/phpunit tests/caminho/do/ExemploTest.php``
