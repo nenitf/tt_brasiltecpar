@@ -1,4 +1,4 @@
-# tt_hasheros
+# tt_brasiltecpar
 
 Teste técnico para [Brasil TecPar](https://www.brasiltecpar.com.br/) cujo **NÃO OBTIVE RESPOSTA**
 
